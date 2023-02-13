@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
+<link th:replace="~{fragments :: bootstrap}"></link>
 </head>
 <body>
-<h1>Best of the year by <b th:text=${name}></b></h1>
+<!--div th:include="~{fragments :: title}"> it doesn't actually include the fragment's container tag (H2) !!! </div-->
+<div th:replace="~{fragments :: header}"></div>
+
 </body>
 </html>
