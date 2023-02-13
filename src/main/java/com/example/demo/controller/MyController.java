@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,17 +33,32 @@ public class MyController {
 	}
 	
 	@GetMapping("/movies")
-	public String showMovies(Model modMovie) {
+	public String showMovies(Model modMovies) {
 		List<Movie> movies = getBestMovies();
-		modMovie.addAttribute("movies", movies);
+		modMovies.addAttribute("movies", movies);
 		return "movies";
 	}
+	@GetMapping("/movie/{id}")
+	public String showMovieDetails(Model modMovie, @PathVariable("id") int id) { // provato a mettere id come stringa.. disastro per provare un parseInt
+		List<Movie> movies = getBestMovies();
+		 Movie movie = movies.stream().filter(m -> m.getId() == id).findFirst().orElse(null); // GUARDA, FILTRA, IL 1° CHE TROVA altrimenti NULL
+		    modMovie.addAttribute("movie", movie);
+		    return "movie";
+	}
+	
 
 	@GetMapping("/songs")
-	public String showSongs(Model modSong) {
+	public String showSongs(Model modSongs) {
 		List<Song> songs = getBestSongs();
-		modSong.addAttribute("songs", songs);
+		modSongs.addAttribute("songs", songs);
 		return "songs";
+	}
+	@GetMapping("/song/{id}")
+	public String showSong(Model modSong, @PathVariable("id") int id) {
+		List<Song> songs = getBestSongs();
+		Song song = songs.stream().filter(m -> m.getId() == id).findFirst().orElse(null);
+		modSong.addAttribute("song", song);
+		return "song";
 	}
 
 	private List<Movie> getBestMovies() {

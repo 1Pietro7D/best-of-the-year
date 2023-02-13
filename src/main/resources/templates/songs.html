@@ -1,15 +1,19 @@
 <!DOCTYPE html>
+<!-- https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>songs</title>
+<link th:replace="~{fragments :: bootstrap}"></link>
 </head>
 <body>
+<div th:replace="~{fragments :: header}"></div>
 <h1>List of Song </h1>
 <ul>
   <li th:each="song : ${songs}">
-  <span th:text="${song.id}"></span> - <span th:text="${song.title}"></span>
+  <a th:href="@{song/{id}(id=${song.id})}"><span th:text="${song.id}"></span> - <span th:text="${song.title}"></span></a>
 </li>
 </ul>
+<div th:replace="~{fragments :: homeLink}"></div>
 </body>
 </html>

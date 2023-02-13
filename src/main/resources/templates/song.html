@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>movies</title>
+<title>[[${song.title}]]</title>
 <link th:replace="~{fragments :: bootstrap}"></link>
 </head>
 <body>
 <div th:replace="~{fragments :: header}"></div>
-<div th:replace="~{fragments :: movies}"></div>
+<h1>[[${song.title}]]  id: [[${song.id}]]</h1>
 <div th:replace="~{fragments :: homeLink}"></div>
 </body>
 </html>

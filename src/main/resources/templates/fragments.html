@@ -17,16 +17,37 @@
 </th:block>
 </head>
 <body>
-	<header th:fragment="header" class="row border p-2 align-items-center justify-content-center">
-	<div class="col-3">
-		<h2>Best of:</h2>
-	</div>
-	<div class="col-3">
-		<a th:href="@{/movies}" class="btn btn-primary btn-block">Movies</a>
-	</div>
-	<div class="col-3">
-		<a th:href="@{/songs}" class="btn btn-primary btn-block">Songs</a>
-	</div>
+	<!-- HEADER fragment -->
+	<header th:fragment="header"
+		class="row border p-2 align-items-center justify-content-center">
+		<div class="col-3">
+			<h2>Best of:</h2>
+		</div>
+		<div class="col-3">
+			<a th:href="@{/movies}" class="btn btn-primary btn-block">Movies</a>
+			<!-- DINAMIC URL -->
+		</div>
+		<div class="col-3">
+			<a th:href="@{/songs}" class="btn btn-primary btn-block">Songs</a>
+			<!-- DINAMIC URL -->
+		</div>
 	</header>
+	<!-- /HEADER fragment -->
+
+	<!-- MOVIES fragment -->
+	<main th:fragment="movies">
+		<h1>List of Movies</h1>
+		<ul>
+			<li th:each="movie : ${movies}"><a
+				th:href="@{movie/{id}(id=${movie.id})}"> 
+				[[${movie.id}]] - [[${movie.title}]]></a></li>
+		</ul>
+	</main>
+	<!-- /MOVIES fragment -->
+
+	<div class="mt-5" th:fragment="homeLink">
+		<a th:href="@{/}" class="btn btn-primary btn-block">Homepage</a>
+	</div>
+
 </body>
 </html>
