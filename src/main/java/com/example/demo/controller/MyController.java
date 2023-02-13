@@ -58,7 +58,7 @@ public class MyController {
 	@GetMapping("/song/{id}")
 	public String showSongDetails(Model modSong, @PathVariable("id") int id) {
 	    List<Song> songs = getBestSongs();
-	    Map<Integer, Song> songMap = songs.stream().collect(Collectors.toMap(Song::getId, s -> s)); // MAPPATURA della lista
+	    Map<Integer, Song> songMap = songs.stream().collect(Collectors.toMap(Song::getId, s -> s)); // MAPPATURA della lista   "s -> s" lambda expression or "Function.identity()"
 	    Song song = songMap.get(id);
 	    modSong.addAttribute("song", song);
 	    return "song";
