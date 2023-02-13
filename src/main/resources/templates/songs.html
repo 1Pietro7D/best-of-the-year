@@ -7,7 +7,9 @@
 <body>
 <h1>List of Song </h1>
 <ul>
-  <li th:each="song : ${songs}" th:text="${song}"></li>
+  <li th:each="song : ${songs}">
+  <span th:text="${song.id}"></span> - <span th:text="${song.title}"></span>
+</li>
 </ul>
 </body>
 </html>

@@ -17,4 +17,8 @@ public class Song {
 	public String getTitle() {
 		return title;
 	}
+
+	public int getId() {
+		return id;
+	}
 }

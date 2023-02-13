@@ -7,7 +7,9 @@
 <body>
 <h1>List of Movies </h1>
 <ul>
-  <li th:each="movie : ${movies}" th:text="${movie}"></li>
+ <li th:each="movie : ${movies}">
+  <span th:text="${movie.id}"></span> - <span th:text="${movie.title}"></span>
+</li>
 </ul>
 </body>
 </html>
