@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,11 +56,12 @@ public class MyController {
 		return "songs";
 	}
 	@GetMapping("/song/{id}")
-	public String showSong(Model modSong, @PathVariable("id") int id) {
-		List<Song> songs = getBestSongs();
-		Song song = songs.stream().filter(m -> m.getId() == id).findFirst().orElse(null);
-		modSong.addAttribute("song", song);
-		return "song";
+	public String showSongDetails(Model modSong, @PathVariable("id") int id) {
+	    List<Song> songs = getBestSongs();
+	    Map<Integer, Song> songMap = songs.stream().collect(Collectors.toMap(Song::getId, s -> s)); // MAPPATURA della lista
+	    Song song = songMap.get(id);
+	    modSong.addAttribute("song", song);
+	    return "song";
 	}
 
 	private List<Movie> getBestMovies() {
