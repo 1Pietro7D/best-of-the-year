@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
 <title>Home</title>
 <link th:replace="~{fragments :: bootstrap}"></link>
 </head>
 <body>
-<!--div th:include="~{fragments :: title}"> it doesn't actually include the fragment's container tag (H2) !!! </div-->
+<!-- div th:insert="~{fragments :: header}">okey, now is include in div</div -->
 <div th:replace="~{fragments :: header}"></div>
 
 </body>
