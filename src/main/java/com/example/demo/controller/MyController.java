@@ -46,6 +46,16 @@ public class MyController {
 		 Movie movie = movies.stream().filter(m -> m.getId() == id).findFirst().orElse(null); // GUARDA, FILTRA, IL 1° CHE TROVA altrimenti NULL
 		    modMovie.addAttribute("movie", movie);
 		    return "movie";
+		/*
+		List<Movie> movies = getBestMovies();
+			for (Movie movie : movies) {
+				if (movie.getId() == id) {
+					return movie;
+				}else{
+				return null
+				}
+			}
+		*/
 	}
 	
 
